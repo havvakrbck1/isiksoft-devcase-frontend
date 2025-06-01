@@ -30,7 +30,7 @@ This project uses next/font to automatically optimize and load the Geist font fa
 
 Here is an app screenshot:
 
-![App Screenshot](https://raw.githubusercontent.com/havvakrbck1/isiksoft-devcase-frontend/refs/heads/main/README.md)
+![App Screenshot](assets/ss.png)
 
 Learn More
 To learn more about Next.js, check out the following resources:
