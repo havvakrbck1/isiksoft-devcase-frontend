@@ -1,4 +1,3 @@
-// src/components/Layout.js
 import { useState, Fragment, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -7,11 +6,9 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 
 export default function Layout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  // Tema state'i için başlangıç değerini localStorage'dan veya sistem tercihinden alacak şekilde ayarlıyoruz.
-  // Bu, sayfa ilk yüklendiğinde doğru temanın anında uygulanmasını sağlar.
   const [theme, setTheme] = useState(() => {
-    if (typeof window === 'undefined') { // SSR/SSG durumunda varsayılan
-      return 'dark'; // Veya 'light', projenin varsayılanına göre
+    if (typeof window === 'undefined') { 
+      return 'dark'; 
     }
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme && (savedTheme === 'dark' || savedTheme === 'light')) {
@@ -21,14 +18,13 @@ export default function Layout({ children }) {
   });
 
   useEffect(() => {
-    // theme state'i her değiştiğinde <html> elementine class ekle/kaldır ve localStorage'a yaz.
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
     localStorage.setItem('theme', theme);
-  }, [theme]); // theme state'i değiştiğinde bu effect çalışsın
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
@@ -36,10 +32,8 @@ export default function Layout({ children }) {
 
   return (
     <>
-      {/* Mobil Sidebar (Headless UI Dialog) */}
       <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50 md:hidden" onClose={setSidebarOpen}>
-          {/* ... (Transition.Child ve Dialog.Panel içindeki Sidebar ve kapatma butonu aynı kalacak) ... */}
           <Transition.Child as={Fragment} enter="transition-opacity ease-linear duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="transition-opacity ease-linear duration-300" leaveFrom="opacity-100" leaveTo="opacity-0">
              <div className="fixed inset-0 bg-gray-900/80" />
           </Transition.Child>
@@ -55,7 +49,7 @@ export default function Layout({ children }) {
                    </div>
                  </Transition.Child>
                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:bg-slate-900 ring-1 ring-white/10 w-60">
-                    <Sidebar /> {/* Sidebar'ın kendi içinde dark: stilleri olmalı */}
+                    <Sidebar /> 
                  </div>
                </Dialog.Panel>
              </Transition.Child>
@@ -63,9 +57,8 @@ export default function Layout({ children }) {
         </Dialog>
       </Transition.Root>
 
-      {/* Static sidebar for desktop */}
       <div className="hidden md:fixed md:inset-y-0 md:z-40 md:flex md:w-60 md:flex-col">
-        <Sidebar /> {/* Sidebar'ın kendi içinde dark: stilleri olmalı */}
+        <Sidebar /> 
       </div>
 
       <div className="md:pl-60 flex flex-col flex-1 min-h-screen">

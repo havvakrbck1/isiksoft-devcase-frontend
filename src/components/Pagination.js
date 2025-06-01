@@ -1,4 +1,3 @@
-// src/components/Pagination.js
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 
 function classNames(...classes) {
@@ -61,9 +60,6 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
 
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
-          {/* "Showing X to Y of Z results" metni index.js'te olacak, Figma'ya göre burası boş */}
-        </div>
-        <div>
           <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
             <button
               onClick={() => onPageChange(currentPage - 1)}
@@ -84,7 +80,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
                     currentPage === page
                       ? 'relative z-10 inline-flex items-center bg-blue-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600' // AÇIK TEMA: Figma'daki aktif renk (örn: bg-blue-600)
                       : 'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 ring-1 ring-inset ring-gray-300 dark:ring-slate-600 hover:bg-gray-100 dark:hover:bg-slate-700 focus:z-20 focus:outline-offset-0', // AÇIK TEMA: normal metin text-gray-700, hover bg-gray-100
-                    // 'px-4 py-2 text-sm font-semibold' // Bu satır zaten yukarıdakilerde var, tekrarına gerek yok gibi.
+                    
                   )}
                 >
                   {page}

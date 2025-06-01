@@ -1,17 +1,13 @@
-// src/pages/categories.js
 import { useEffect, useState } from 'react';
 import { PlusIcon, PencilSquareIcon, TrashIcon, TagIcon } from '@heroicons/react/20/solid';
 
-// Şimdilik statik kategori listesi (API'den çekme sonra eklenecek)
 const initialCategories = [
   { id: 1, name: 'Electronics', productCount: 120, description: 'Gadgets, devices, and more.' },
   { id: 2, name: 'Fashion', productCount: 350, description: 'Apparel, shoes, and accessories.' },
-  // ... (daha fazla örnek kategori eklenebilir)
 ];
 
 export default function CategoriesPage() {
   const [categories, setCategories] = useState(initialCategories);
-  // loading ve error state'leri API entegrasyonu ile eklenecek
 
   return (
     <div className="p-4 md:p-6">

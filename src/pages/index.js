@@ -1,12 +1,9 @@
-// src/pages/index.js
 import { useEffect, useState } from 'react';
 import StatCard from '../components/StatCard';
 import ProductTable from '../components/ProductTable';
 import Pagination from '../components/Pagination';
-import { MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/20/solid'; // Figma'ya göre gerekirse başka ikonlar eklenebilir
+import { MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/20/solid'; 
 
-// StatCard'lar için örnek veriler (Figma'daki değerlere göre güncellenmeli)
-// Figma'da StatCard'larda ikon olmadığı için IconComponent kaldırıldı.
 const stats = [
   { name: 'Active Products', stat: '247,384', change: '+15%' },
   { name: 'New Products', stat: '+2,368', change: '+2%' },
@@ -20,7 +17,7 @@ export default function ProductsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedProductIds, setSelectedProductIds] = useState([]); // Checkbox seçimi için
+  const [selectedProductIds, setSelectedProductIds] = useState([]); 
 
   useEffect(() => {
     async function fetchData(pageToFetch) {
@@ -33,8 +30,6 @@ export default function ProductsPage() {
         }
         const data = await response.json();
         setProductsData(data);
-        // API'den gelen mevcut sayfayı kullanmak daha doğru olabilir
-        // setCurrentPage(data.meta.current_page);
       } catch (e) {
         setError(e.message);
         console.error("Failed to fetch products:", e);
@@ -48,7 +43,7 @@ export default function ProductsPage() {
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= (productsData?.meta?.last_page || 1) && newPage !== productsData?.meta?.current_page) {
       setCurrentPage(newPage);
-      setSelectedProductIds([]); // Sayfa değişince seçimleri sıfırla
+      setSelectedProductIds([]); 
     }
   };
 
@@ -62,12 +57,10 @@ export default function ProductsPage() {
 
   // TODO: handleSelectAll fonksiyonu (tüm ürünleri seç/bırak) eklenecek ve ProductTable'a prop olarak geçilecek.
 
-  // --- Render Kontrolleri ---
-  if (loading && !productsData) { // Sadece ilk yüklemede tam ekran loading
+  if (loading && !productsData) { 
     return (
       <div className="flex justify-center items-center min-h-[calc(100vh-theme(space.16))] p-4">
         <p className="text-xl text-gray-600 dark:text-gray-300">Products Loading...</p>
-        {/* Gelişmiş bir spinner eklenebilir */}
       </div>
     );
   }
@@ -78,7 +71,7 @@ export default function ProductsPage() {
         <p className="text-xl text-red-500 font-semibold">Error Loading Products</p>
         <p className="text-md text-red-400 mt-1">{error}</p>
         <button 
-          onClick={() => {setCurrentPage(1); fetchData(1);}} // fetchData'yı da çağırabiliriz veya sadece reload
+          onClick={() => {setCurrentPage(1); fetchData(1);}} 
           className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
         >
           Retry
@@ -88,7 +81,6 @@ export default function ProductsPage() {
   }
 
   if (!productsData || !productsData.data) { 
-    // Bu durum genellikle error tarafından yakalanır ama bir güvenlik önlemi
     return ( 
       <div className="flex justify-center items-center min-h-[calc(100vh-theme(space.16))] p-4">
         <p className="text-xl text-gray-500 dark:text-gray-400">No product data available.</p>
@@ -97,9 +89,8 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="p-4 md:p-6 space-y-6 sm:space-y-8"> {/* Ana container için padding ve dikey boşluk */}
-      {/* Sayfa Başlığı */}
-      <div> {/* Ekstra sarmalayıcı div, mb-6 yerine space-y kullanıldığı için */}
+    <div className="p-4 md:p-6 space-y-6 sm:space-y-8"> 
+      <div> 
         <h1 className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-white">
           Products
         </h1>
@@ -108,8 +99,7 @@ export default function ProductsPage() {
         </p>
       </div>
 
-      {/* İstatistik Kartları */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"> {/* Figma'ya göre gap ve responsive cols */}
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"> 
         {stats.map((item) => (
           <StatCard
             key={item.name}
@@ -120,7 +110,6 @@ export default function ProductsPage() {
         ))}
       </div>
       
-      {/* All Products Bölümü */}
       <div className="bg-white dark:bg-slate-800 shadow-md sm:rounded-lg">
         <div className="px-4 py-5 sm:px-6 border-b border-gray-200 dark:border-slate-700">
           <div className="flex flex-wrap items-center justify-between gap-y-4 gap-x-4 sm:gap-x-6">
@@ -141,7 +130,6 @@ export default function ProductsPage() {
                   // TODO: Arama işlevselliği için onChange ve state eklenecek
                 />
               </div>
-              {/* TODO: Figma'daki filtre/sıralama ikonları ve butonları buraya eklenecek */}
               <button
                 type="button"
                 className="inline-flex order-1 sm:order-2 items-center gap-x-1.5 rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 whitespace-nowrap"
@@ -154,10 +142,8 @@ export default function ProductsPage() {
           </div>
         </div>
         
-        {/* Ürün Tablosu ve Yükleme/Boş Durum */}
-        {/* Sayfa değiştirirken loading gösterimi */}
         {loading && productsData?.data?.length > 0 && (
-             <div className="relative opacity-70"> {/* Hali hazırda veri varken yükleme için hafif transparanlık */}
+             <div className="relative opacity-70"> 
                <ProductTable
                  products={productsData.data}
                  onProductSelect={handleProductSelect}
@@ -181,7 +167,7 @@ export default function ProductsPage() {
         )}
 
         {!loading && productsData?.data?.length === 0 && (
-          <div className="text-center text-gray-500 dark:text-gray-400 py-16 px-4"> {/* Daha fazla padding */}
+          <div className="text-center text-gray-500 dark:text-gray-400 py-16 px-4"> 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-3">
               <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125V6.375c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v.001c0 .621.504 1.125 1.125 1.125z" />
             </svg>
@@ -190,7 +176,6 @@ export default function ProductsPage() {
           </div>
         )}
 
-        {/* Sayfalama */}
         {productsData?.meta && productsData.meta.last_page > 1 && (
           <div className="border-t border-gray-200 dark:border-slate-700">
             <Pagination
@@ -207,12 +192,6 @@ export default function ProductsPage() {
          )}
       </div>
 
-      {/* Mobil ve Tablet Product List Alternatifi (Şimdilik yorumda, Figma'ya göre yapılacak) */}
-      {/* 
-      <div className="md:hidden mt-6">
-          <p className="text-center text-gray-600 dark:text-gray-400">Product table is best viewed on larger screens.</p>
-      </div> 
-      */}
     </div>
   );
 }

@@ -1,4 +1,3 @@
-// src/components/Sidebar.js
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -11,8 +10,8 @@ import {
   TagIcon,
   ChevronUpIcon,
   ChevronDownIcon,
-  MagnifyingGlassIcon, // EKLENDİ
-  CircleStackIcon, // Categories için örnek, Figma'ya göre değiştir
+  MagnifyingGlassIcon, 
+  CircleStackIcon, 
   // TODO: Figma'daki TÜM ikonları buraya import et (Sales için ChartBarIcon, Orders için ShoppingCartIcon vb.)
   Cog6ToothIcon,
   ArrowLeftOnRectangleIcon,
@@ -34,20 +33,16 @@ const navigation = [
       { name: 'Add New Product', href: '/products/new', icon: PlusCircleIcon },
       { name: 'Tags', href: '/products/tags', icon: TagIcon },
       { name: 'Categories', href: '/products/categories', icon: CircleStackIcon },
-      // ... Diğer alt menüler
     ],
   },
 ];
 
 // TODO: Bu diziyi Figma'ya göre doldur VEYA kullanmayacaksan yorum satırına al/sil.
 const analyticsNavigation = [
-  // { name: 'Sales', href: '/analytics/sales', icon: ChartBarIcon, badge: '46' },
-  // { name: 'Orders', href: '/analytics/orders', icon: ShoppingCartIcon, children: [/*...*/] },
 ];
 
 // TODO: Bu diziyi Figma'ya göre doldur VEYA kullanmayacaksan yorum satırına al/sil.
 const appsNavigation = [
-  // { name: 'Chat', href: '/apps/chat', icon: ChatBubbleLeftEllipsisIcon, badge: '9+' },
 ];
 
 const settingsNavigation = [
@@ -78,7 +73,7 @@ export default function Sidebar() {
             )}
           >
             <div className="flex items-center">
-              {item.icon && <item.icon // İkon varsa göster
+              {item.icon && <item.icon 
                 className={classNames(
                   current ? 'text-white' : 'text-gray-400 group-hover:text-gray-500',
                   'mr-3 flex-shrink-0 h-5 w-5'
@@ -109,7 +104,7 @@ export default function Sidebar() {
             <Disclosure.Button
               className={classNames(
                 current
-                  ? 'bg-blue-600 text-white' // Ana kategori aktifse mavi
+                  ? 'bg-blue-600 text-white' 
                   : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
                 'group flex w-full items-center justify-between rounded-md px-3 py-2.5 text-left text-sm font-medium'
               )}
@@ -183,13 +178,6 @@ export default function Sidebar() {
     <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-3 pb-4 border-r border-gray-200 w-60">
     
     <div className="flex h-16 shrink-0 items-center justify-start ...">
-      {/* <Image
-        src="/logo-master-pos.svg" // Bu hata veriyordu
-        alt="Master POS"
-        width={32}
-        height={32}
-        className="mr-2"
-      /> */}
       <span className="text-xl font-bold text-slate-800 dark:text-white">Master POS</span>
       </div>
       <div className="relative mt-4 mb-2 px-1">

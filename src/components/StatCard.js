@@ -1,17 +1,15 @@
-// src/components/StatCard.js
 import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/20/solid';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function StatCard({ name, stat, change }) { // IconComponent prop'u kaldırıldı
+export default function StatCard({ name, stat, change }) { 
   const isIncrease = change ? change.startsWith('+') : false;
   const isDecrease = change ? change.startsWith('-') : false;
 
   return (
-    <div className="overflow-hidden rounded-lg bg-white dark:bg-slate-800 px-4 py-5 shadow-sm sm:p-6"> {/* shadow-sm veya Figma'daki gölge */}
-      {/* İkonlu kutucuk bölümü tamamen kaldırıldı */}
+    <div className="overflow-hidden rounded-lg bg-white dark:bg-slate-800 px-4 py-5 shadow-sm sm:p-6"> 
       <dt className="truncate text-sm font-medium text-gray-500 dark:text-gray-400">
         {name}
       </dt>
