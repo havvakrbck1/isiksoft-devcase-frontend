@@ -44,6 +44,3 @@ The easiest way to deploy your Next.js app is to use the Vercel Platform from th
 
 See the Next.js deployment documentation for more details.
 
-yaml
-Kopyala
-Düzenle
