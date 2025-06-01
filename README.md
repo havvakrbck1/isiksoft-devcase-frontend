@@ -14,7 +14,6 @@ yarn dev
 pnpm dev
 # or
 bun dev
-Open http://localhost:3000 with your browser to see the result.
 
 Open http://localhost:3000 with your browser to see the result.
 
@@ -26,11 +25,10 @@ The pages/api directory maps to /api/* endpoints instead of React pages.
 
 This project uses next/font to automatically optimize and load the Geist font family.
 
-## Screenshot
-
+Screenshot
 Here is an app screenshot:
 
-![App Screenshot](assets/ss.png)
+
 
 Learn More
 To learn more about Next.js, check out the following resources:
@@ -45,3 +43,7 @@ Deploy on Vercel
 The easiest way to deploy your Next.js app is to use the Vercel Platform from the creators of Next.js.
 
 See the Next.js deployment documentation for more details.
+
+yaml
+Kopyala
+Düzenle
