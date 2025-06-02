@@ -30,7 +30,10 @@ Here is an app screenshot:
 
 ![App Screenshot](assets/ss.png)
 
-Learn More
+## Test Görsel
+
+![Test Görsel](https://github.com/havvakrbck1/isiksoft-devcase-frontend/raw/main/assets/ss.png)
+
 
 Learn More
 To learn more about Next.js, check out the following resources:
