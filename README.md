@@ -25,15 +25,12 @@ The pages/api directory maps to /api/* endpoints instead of React pages.
 
 This project uses next/font to automatically optimize and load the Geist font family.
 
-Screenshot
+## Screenshot
 Here is an app screenshot:
-<<<<<<< HEAD
-![App Screenshot](assets/ss.png)
-
-=======
 
 ![App Screenshot](assets/ss.png)
->>>>>>> 1e5a89a (README'deki görsel yolu düzeltildi)
+
+Learn More
 
 Learn More
 To learn more about Next.js, check out the following resources:
