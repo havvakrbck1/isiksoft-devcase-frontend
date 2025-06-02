@@ -28,7 +28,7 @@ This project uses next/font to automatically optimize and load the Geist font fa
 ## Screenshot
 Here is an app screenshot:
 
-![App Screenshot](assets/ss.png)
+![App Screenshot](images/images.png)
 
 
 Learn More
